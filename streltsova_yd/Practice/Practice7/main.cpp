@@ -202,4 +202,6 @@ void main()
     } 
     cout << "a = A.x[1] = " << A.x[1] << endl;
     cout << "Length(A) = " << A.Length() << endl;
+    int i; 
+    cin >> i;
 }
