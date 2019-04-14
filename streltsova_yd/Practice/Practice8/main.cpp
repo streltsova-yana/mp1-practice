@@ -113,6 +113,4 @@ void main()
     {
         cout << a << endl << endl;
     }
-    int i;
-    cin >> i;
 }
