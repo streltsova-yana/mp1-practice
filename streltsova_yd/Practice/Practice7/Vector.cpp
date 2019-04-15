@@ -137,7 +137,7 @@ double Vector :: Length() const
 };
 void*  Vector :: operator new[](size_t n)
 {
-    void *p = new Vector[n];
+    void *p = malloc(sizeof(Vector) * n);
     return p;
 };
 void Vector :: operator delete[](void *p)
