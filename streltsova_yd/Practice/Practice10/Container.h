@@ -89,8 +89,7 @@ void Container <T>::Add(T x)
     {
         maxsize++;
     };
-    arr[n] = x;
-    n++;
+    arr[n++] = x;
 };
 template <typename T>
 void Container <T>::Delete(T x)
@@ -98,9 +97,8 @@ void Container <T>::Delete(T x)
     if (IsEmpty())
         throw Exception("the container is empty");
     int pos = this->Find(x);
-    arr[pos] = arr[n - 1];
-    arr[n - 1] = 0;
-    n--;
+    arr[pos] = arr[--n];
+    arr[n] = 0;
 };
 template <typename T>
 void Container <T>::Print() const
