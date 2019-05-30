@@ -66,11 +66,14 @@ Global
 		{58B01D77-60EA-49FC-A8A3-268C25BCC491}.Release|Win32.ActiveCfg = Release|Win32
 		{58B01D77-60EA-49FC-A8A3-268C25BCC491}.Release|Win32.Build.0 = Release|Win32
 <<<<<<< HEAD
+<<<<<<< HEAD
 		{532DD840-C8F3-4C37-A9F0-33B1925E90F4}.Debug|Win32.ActiveCfg = Debug|Win32
 		{532DD840-C8F3-4C37-A9F0-33B1925E90F4}.Debug|Win32.Build.0 = Debug|Win32
 		{532DD840-C8F3-4C37-A9F0-33B1925E90F4}.Release|Win32.ActiveCfg = Release|Win32
 		{532DD840-C8F3-4C37-A9F0-33B1925E90F4}.Release|Win32.Build.0 = Release|Win32
 =======
+=======
+>>>>>>> Practice6
 =======
 		{2C9E42EA-860E-4CBA-A2B4-9A020DEFBAFC}.Release|x64.ActiveCfg = Release|Win32
 		{3AEEFE37-9EA6-433C-B4F4-7FEC076CB10E}.Debug|Win32.ActiveCfg = Debug|Win32
