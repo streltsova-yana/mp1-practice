@@ -1,25 +1,25 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
 #include <time.h>
 #define BUFFER 2048
 #define FMAX 1000
 #define MAX_SIZE 10000
-void Input_path(wchar_t **sDir)                                       
+void Input_path(wchar_t** sDir)
 {
-    char *path;
+    char* path;
     *sDir = (wchar_t*)malloc(BUFFER * sizeof(wchar_t));
     path = (char*)malloc(BUFFER * sizeof(char));
-    printf ("Enter the path to the directory\n");
-    fgets (path, BUFFER, stdin);
-    path[strlen(path) - 1] = '\0';                    
-    swprintf (*sDir, BUFFER, L"%hs", path);
+    printf("Enter the path to the directory\n");
+    fgets(path, BUFFER, stdin);
+    path[strlen(path) - 1] = '\0';
+    swprintf(*sDir, BUFFER, L"%hs", path);
 }
-int List_Directory_Contents(const wchar_t *sDir, wchar_t **fName, ULONGLONG *fSize)
+int List_Directory_Contents(const wchar_t* sDir, wchar_t** fName, ULONGLONG* fSize)
 {
     WIN32_FIND_DATA fdFile;
     HANDLE hFind = NULL;
-    wchar_t *sPath;
+    wchar_t* sPath;
     unsigned long i = 0;
     sPath = (wchar_t*)malloc(BUFFER * sizeof(wchar_t));
     wsprintf(sPath, L"%s\\*.*", sDir);
@@ -43,21 +43,21 @@ int List_Directory_Contents(const wchar_t *sDir, wchar_t **fName, ULONGLONG *fSi
     FindClose(hFind);
     return i;
 }
-void Output_Directory(wchar_t **fName, ULONGLONG *fSize, unsigned long *ind, unsigned long n)
+void Output_Directory(wchar_t** fName, ULONGLONG* fSize, unsigned long* ind, unsigned long n)
 {
     unsigned long i;
     printf("\n List Directory Contents:\n");
     printf("\n");
     if (n == 0)
-        printf ("Empty directory\n");
+        printf("Empty directory\n");
     for (i = 0; i < n; i++)
         wprintf(L" File: %s Size: %lld bytes\n", fName[ind[i]], fSize[ind[i]]);
 }
 void Menu()
 {
     printf("\n");
-    printf ("Menu\n");
-    printf ("Enter a number to select a command\n");
+    printf("Menu\n");
+    printf("Enter a number to select a command\n");
     printf("\n");
     printf("1 - Selection sort\n");
     printf("2 - Insertion sort\n");
@@ -67,7 +67,7 @@ void Menu()
     printf("6 - Merge sort\n");
     printf("7 - Exit the program\n");
 }
-void Selection_sort(ULONGLONG *a, unsigned long *b, int n)
+void Selection_sort(ULONGLONG * a, unsigned long* b, int n)
 {
     int i = 0, j, minind, tmp;
     for (i; i < n; i++)
@@ -81,7 +81,7 @@ void Selection_sort(ULONGLONG *a, unsigned long *b, int n)
         b[i] = tmp;
     }
 }
-void Insertion_sort(ULONGLONG *a, unsigned long *b, int n)
+void Insertion_sort(ULONGLONG * a, unsigned long* b, int n)
 {
     int i = 1, j, tmp;
     for (i; i < n; i++)
@@ -95,7 +95,7 @@ void Insertion_sort(ULONGLONG *a, unsigned long *b, int n)
         }
     }
 }
-void Bubble_sort(ULONGLONG *a, unsigned long *b, int n)
+void Bubble_sort(ULONGLONG * a, unsigned long* b, int n)
 {
     int i = 0, j, tmp;
     for (i; i < n; i++)
@@ -109,9 +109,9 @@ void Bubble_sort(ULONGLONG *a, unsigned long *b, int n)
             }
     }
 }
-int Counting_sort (ULONGLONG *a, unsigned long *b, int n)
+int Counting_sort(ULONGLONG * a, unsigned long* b, int n)
 {
-    int *count = (int*)malloc(MAX_SIZE * sizeof(int));
+    int* count = (int*)malloc(MAX_SIZE * sizeof(int));
     int i = 0, j, ind = 0, h;
     for (i; i < MAX_SIZE; i++)
         count[i] = 0;
@@ -120,7 +120,7 @@ int Counting_sort (ULONGLONG *a, unsigned long *b, int n)
             count[a[b[i]]]++;
         else
         {
-            printf ("File size too large\n");
+            printf("File size too large\n");
             return 1;
         }
     for (i = 0; i < MAX_SIZE; i++)
@@ -134,18 +134,18 @@ int Counting_sort (ULONGLONG *a, unsigned long *b, int n)
                 b[ind++] = h++;
             }
         }
-        free (count);
-        return 0;
+    free(count);
+    return 0;
 }
-void Quick_sort (ULONGLONG *a, unsigned long *b, int left, int right)
+void Quick_sort(ULONGLONG * a, unsigned long* b, int left, int right)
 {
     int i = left, j = right, x = a[b[(left + right) / 2]], tmp;
     do {
         while (a[b[i]] < x) i++;
         while (a[b[j]] > x) j--;
-        if(i <= j)
+        if (i <= j)
         {
-            if (a[b[i]] > a[b[j]]) 
+            if (a[b[i]] > a[b[j]])
             {
                 tmp = b[i];
                 b[i] = b[j];
@@ -154,13 +154,13 @@ void Quick_sort (ULONGLONG *a, unsigned long *b, int left, int right)
             i++;
             j--;
         }
-    }while (i <= j);
+    } while (i <= j);
     if (i < right)
         Quick_sort(a, b, i, right);
     if (left < j)
         Quick_sort(a, b, left, j);
 }
-void Merge(ULONGLONG *a, unsigned long *b, int left, int mid, int right) 
+void Merge(ULONGLONG * a, unsigned long* b, int left, int mid, int right)
 {
     int i, j = mid + 1, h, tmp;
     for (i = left; ((i < right) && (j <= right)); i++)
@@ -174,9 +174,9 @@ void Merge(ULONGLONG *a, unsigned long *b, int left, int mid, int right)
             j++;
         }
     }
-    
+
 }
-void Merge_sort(ULONGLONG *a, unsigned long *b, int left, int right)
+void Merge_sort(ULONGLONG * a, unsigned long* b, int left, int right)
 {
     int mid;
     if (left >= right) return;
@@ -190,14 +190,14 @@ void main()
     clock_t start, end;
     float time = 0.0f;
     int f = 0;
-    unsigned long *ind;
-    wchar_t *path, **fName;
-    ULONGLONG *fSize;
+    unsigned long* ind;
+    wchar_t* path, ** fName;
+    ULONGLONG* fSize;
     unsigned long i = 0, count = -1, mode;
     fName = (wchar_t**)malloc(FMAX * sizeof(wchar_t*));
     fSize = (ULONGLONG*)malloc(FMAX * sizeof(ULONGLONG));
-    printf ("          File Manager\n");
-    printf ("\n");
+    printf("          File Manager\n");
+    printf("\n");
     while (count == -1)
     {
         Input_path(&path);
@@ -213,39 +213,39 @@ void main()
         f = 0;
         do
         {
-            scanf ("%d", &mode);
-        }while ((mode != 1) && (mode != 2) && (mode != 3) && (mode != 4) && (mode != 5) && (mode != 6) && (mode != 7) && (mode != 8));
+            scanf("%d", &mode);
+        } while ((mode != 1) && (mode != 2) && (mode != 3) && (mode != 4) && (mode != 5) && (mode != 6) && (mode != 7) && (mode != 8));
         switch (mode)
         {
-    case 1:
-        start = clock();
-        Selection_sort (fSize, ind, count);
-        end = clock();
-        break;
-    case 2:
-        start = clock();
-        Insertion_sort (fSize, ind, count);
-        end = clock();
-        break;
-    case 3:
-        start = clock();
-        Bubble_sort (fSize, ind, count);
-        end = clock();
-        break;
-    case 4:
-        start = clock();
-        f = Counting_sort (fSize, ind, count);
-        end = clock();
-        break;
-    case 5:
-        start = clock();
-        Quick_sort (fSize, ind, 0, count - 1);
-        end = clock();
-        break;
-    case 6:
-        start = clock();
-        Merge_sort (fSize, ind, 0, count - 1);
-        end = clock();
+        case 1:
+            start = clock();
+            Selection_sort(fSize, ind, count);
+            end = clock();
+            break;
+        case 2:
+            start = clock();
+            Insertion_sort(fSize, ind, count);
+            end = clock();
+            break;
+        case 3:
+            start = clock();
+            Bubble_sort(fSize, ind, count);
+            end = clock();
+            break;
+        case 4:
+            start = clock();
+            f = Counting_sort(fSize, ind, count);
+            end = clock();
+            break;
+        case 5:
+            start = clock();
+            Quick_sort(fSize, ind, 0, count - 1);
+            end = clock();
+            break;
+        case 6:
+            start = clock();
+            Merge_sort(fSize, ind, 0, count - 1);
+            end = clock();
         }
         time = (double)(end - start) / CLOCKS_PER_SEC;
         if (f == 0)
@@ -253,7 +253,7 @@ void main()
             Output_Directory(fName, fSize, ind, count);
             printf("\n Time: %.6lf sec.\n", time);
         }
-        for (i = 0; i < count; i++)         
+        for (i = 0; i < count; i++)
             ind[i] = i;
         start = end = 0;
     } while (mode != 7);
