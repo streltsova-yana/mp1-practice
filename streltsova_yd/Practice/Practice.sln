@@ -85,6 +85,9 @@ Global
 		{3AEEFE37-9EA6-433C-B4F4-7FEC076CB10E}.Release|x64.ActiveCfg = Release|x64
 		{3AEEFE37-9EA6-433C-B4F4-7FEC076CB10E}.Release|x64.Build.0 = Release|x64
 >>>>>>> Practice5
+<<<<<<< HEAD
+>>>>>>> Practice6
+=======
 >>>>>>> Practice6
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
