@@ -3,13 +3,22 @@
 using namespace std;
 void main()
 {
-    Vector A(5), B(5), C(3), D;
+    Vector A(5), B(5), C(3);
     cout << "Enter the coordinates of vector A of dimension 5" << endl;
     A.Add();
     cout << "Enter the coordinates of vector B of dimension 5" << endl;
     B.Add();
     cout << "Enter the coordinates of vector C of dimension 3" << endl;
     C.Add();
+    Vector D(A);
+    try
+    {
+        D.Print();
+    }
+    catch (const char* a)
+    {
+        cout << a << endl;
+    }
     cout << "A + B = ";
     try
     {
@@ -193,13 +202,15 @@ void main()
     cout << "A.x[0] = 3" << endl << "A = ";
     try
     {
-        A.x[0] = 3;
+        A[0] = 3;
         A.Print();
     }
     catch(const char* a)
     {
         cout << a << endl;
     } 
-    cout << "a = A.x[1] = " << A.x[1] << endl;
+    cout << "a = A[1] = " << A[1] << endl;
     cout << "Length(A) = " << A.Length() << endl;
+    int i;
+    cin >> i;
 }

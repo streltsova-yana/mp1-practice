@@ -1,5 +1,6 @@
 #include "Vector.h"
 #include <iostream>
+#include <cstring>
 #include <math.h>
 using namespace std;
 Vector :: Vector()
@@ -10,16 +11,14 @@ Vector :: Vector()
 Vector :: Vector(int _n)
 {
     n = _n;
-    x = new double[_n];
-    for (int i = 0; i < _n; i++)
-        x[i] = 0;
+    x = new double[n];
+    memset(x, 0, n);
 };
 Vector :: Vector(const Vector& a)
 {
     n = a.n;
     x = new double[n];
-    for (int i = 0; i < a.n; i++)
-        x[i] = a.x[i];
+    memcpy(x, a.x, n);
 };
 Vector :: ~Vector()
 {
@@ -74,7 +73,7 @@ double Vector :: operator*(const Vector& a) const
         S += (x[i] * a.x[i]);
     return S;
 }; 
-Vector Vector :: operator+=(const Vector& a)
+Vector& Vector :: operator+=(const Vector& a)
 {
     if (n != a.n)
         throw "Error: different dimension of vectors";
@@ -82,7 +81,7 @@ Vector Vector :: operator+=(const Vector& a)
         x[i] += a.x[i];
     return *this;
 }; 
-Vector Vector :: operator-=(const Vector& a)
+Vector& Vector :: operator-=(const Vector& a)
 {
     if (n != a.n)
         throw "Error: different dimension of vectors";
@@ -90,25 +89,25 @@ Vector Vector :: operator-=(const Vector& a)
         x[i] -= a.x[i];
     return *this;
 }; 
-Vector Vector :: operator+=(double a)
+Vector& Vector :: operator+=(double a)
 {
     for (int i = 0; i < n; i++)
         x[i] += a;
     return *this;
 }; 
-Vector Vector :: operator-=(double a)
+Vector& Vector :: operator-=(double a)
 {
     for (int i = 0; i < n; i++)
         x[i] -= a;
     return *this;
 }; 
-Vector Vector :: operator*=(double a)
+Vector& Vector :: operator*=(double a)
 {
     for (int i = 0; i < n; i++)
         x[i] *= a;
     return *this;
 };
-Vector& Vector :: operator=(const Vector& a)
+const Vector& Vector :: operator=(const Vector& a)
 {
     if (this == &a)
     {
@@ -117,15 +116,19 @@ Vector& Vector :: operator=(const Vector& a)
     delete[] x;
     n = a.n;
     x = new double[n];
-    for (int i = 0; i < n; i++)
-        x[i] = a.x[i];
-    return *this;
+    memcpy(x, a.x, n);
 }; 
-double* Vector :: operator[](int i) const
+double& Vector :: operator[](int i)
 {
     if ((i < 0) || (i >= n))
         throw "Error: going beyond the dimension of the vector";
-    return &(x[i]);
+    return x[i];
+};
+const double& Vector :: operator[](int i) const
+{
+    if ((i < 0) || (i >= n))
+        throw "Error: going beyond the dimension of the vector";
+    return x[i];
 };
 double Vector :: Length() const
 {
@@ -137,6 +140,8 @@ double Vector :: Length() const
 };
 void*  Vector :: operator new[](size_t n)
 {
+    if (n <= 0)
+        throw "Incorrect size";
     void *p = new Vector[n];
     return p;
 };
