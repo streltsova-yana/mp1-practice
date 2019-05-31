@@ -3,7 +3,7 @@
 #include <cstring>
 #include <math.h>
 using namespace std;
-Vector :: Vector()
+Vector::Vector()
 {
     n = 0;
     x = NULL;
@@ -12,13 +12,13 @@ Vector :: Vector(int _n)
 {
     n = _n;
     x = new double[n];
-    memset(x, 0, n);
+    memset(x, 0, n * sizeof(double));
 };
 Vector :: Vector(const Vector& a)
 {
     n = a.n;
     x = new double[n];
-    memcpy(x, a.x, n);
+    memcpy(x, a.x, n * sizeof(double));
 };
 Vector :: ~Vector()
 {
@@ -116,7 +116,7 @@ const Vector& Vector :: operator=(const Vector& a)
     delete[] x;
     n = a.n;
     x = new double[n];
-    memcpy(x, a.x, n);
+    memcpy(x, a.x, n * sizeof(double));
 }; 
 double& Vector :: operator[](int i)
 {
@@ -142,8 +142,7 @@ void*  Vector :: operator new[](size_t n)
 {
     if (n <= 0)
         throw "Incorrect size";
-    void *p = new Vector[n];
-    return p;
+    return new Vector[n];
 };
 void Vector :: operator delete[](void *p)
 {

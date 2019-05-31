@@ -4,7 +4,7 @@ private:
     int n;
     double* x;
 public:
-    Vector(); //конструктор по умолчанию
+    Vector(); // конструктор по умолчанию
     Vector(int _n); // конструктор с параметром
     Vector(const Vector& a); // конструктор копирования
     ~Vector(); // деструктор
