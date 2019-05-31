@@ -3,20 +3,20 @@
 using namespace std;
 void main()
 {
-    Matrix A(3, 3), B(3, 3), C(3, 2), D, E(2, 3);
+    Matrix A(3, 3), B(3, 3), C(3, 2), E(2, 3);
     cout << "Enter matrix A (3 x 3)" << endl;
-    A.Add();
+    cin >> A;
     cout << "Enter matrix B (3 x 3)" << endl;
-    B.Add();
+    cin >> B;
     cout << "Enter matrix C (3 x 2)" << endl;
-    C.Add();
+    cin >> C;
     cout << "Enter matrix E (2 x 3)" << endl;
-    C.Add();
+    cin >> E;
     cout << "A + B = " << endl;
     try
     {
-        D = A + B;
-        D.Print();
+        Matrix D = A + B;
+        cout << D;
     }
     catch(const char* a)
     {
@@ -25,8 +25,8 @@ void main()
     cout << "A + C = " << endl;
     try
     {
-        D = A + C;
-        D.Print();
+        Matrix D = A + C;
+        cout << D;
     }
     catch (const char* a)
     {
@@ -35,8 +35,8 @@ void main()
     cout << "A - B = " << endl;
     try
     {
-        D = A - B;
-        D.Print();
+        Matrix D = A - B;
+        cout << D;
     }
     catch (const char* a)
     {
@@ -45,8 +45,8 @@ void main()
     cout << "A - C = " << endl;
     try
     {
-        D = A - C;
-        D.Print();
+        Matrix D = A - C;
+        cout << D;
     }
     catch (const char* a)
     {
@@ -55,8 +55,8 @@ void main()
     cout << "A * B = " << endl;
     try
     {
-        D = A * B;
-        D.Print();
+        Matrix D = A * B;
+        cout << D;
     }
     catch (const char* a)
     {
@@ -65,8 +65,8 @@ void main()
     cout << "A * C = " << endl;
     try
     {
-        D = A * C;
-        D.Print();
+        Matrix D = A * C;
+        cout << D;
     }
     catch (const char* a)
     {
@@ -75,8 +75,8 @@ void main()
     cout << "A * E = " << endl;
     try
     {
-        D = A * E;
-        D.Print();
+        Matrix D = A * E;
+        cout << D;
     }
     catch (const char* a)
     {
@@ -84,10 +84,10 @@ void main()
     }
     double a = 5;
     cout << "A + 5 = " << endl;
-    D = A + 5;
+    Matrix D = A + 5;
     try
     {
-        D.Print();
+        cout << D;
     }
     catch (const char* a)
     {
@@ -97,7 +97,7 @@ void main()
     D = A - 5;
     try
     {
-        D.Print();
+        cout << D;
     }
     catch (const char* a)
     {
@@ -107,7 +107,7 @@ void main()
     D = A * 5;
     try
     {
-        D.Print();
+        cout << D;
     }
     catch (const char* a)
     {
