@@ -12,8 +12,4 @@ public:
     {
         return s.c_str();
     };
-    /*void Print()
-    {
-        cout << "Error: " << s << endl;
-    }*/
 };
