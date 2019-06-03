@@ -111,6 +111,6 @@ void Container<T>::Resize(int a)
     T* copy = new T[maxsize];
     for (int i = 0; i < n; i++)
         copy[i] = arr[i];
+    delete[] arr;
     arr = copy;
-    delete[] copy;
 };

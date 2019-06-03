@@ -79,17 +79,11 @@ Matrix Matrix :: operator*(double a) const
         b.m[i] = m[i] * a;
     return b;
 };
-const double& Matrix :: operator[](int i) const
+const double* Matrix :: operator[](int i) const
 {
     if ((i < 0) || (i >= rows))
         throw "Error: no row";
-    return m[i * columns];
-};
-double& Matrix :: operator[](int i)
-{
-    if ((i < 0) || (i >= rows))
-        throw "Error: no row";
-    return m[i * columns];
+    return &(m[i * columns]);
 };
 const Matrix& Matrix :: operator=(const Matrix & a)
 {
